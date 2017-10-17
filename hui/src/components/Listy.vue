@@ -2,8 +2,8 @@
     <div>
         <div v-if="lists != null">
             <div id="listy">
-                <div class="one" v-for="item in lists">
-                    <router-link to="" class="a">
+                <div class="one" v-for="item in lists" :key="item.pic">
+                    <router-link :to="'/item/' + item._id" class="a">
                         <div class="pic">
                             <img :src="'//gaitaobao4.alicdn.com/tfscom/i2/'+item.pic">
                         </div>
@@ -29,6 +29,10 @@
                 </div>
             </div>
         </div>
+        <div v-else>
+            <br><br><br><br>
+            <p style="text-align: center;font-size: 1rem;margin-top: 30%">loading...</p>
+        </div>
     </div>
 </template>
 
@@ -41,20 +45,37 @@
                 lists:null
             }
         },
+        watch:{
+            "$route":["getData"]
+        },
         mounted:function(){
             var that = this;
             console.log(this.$route.params.listname)
             axios.get(`h5/api/category/${this.$route.params.listname}/`)
                 .then(function(res){
+                    console.log(res)
                     that.lists= res.data.data.list;
                 }).catch(function(error){
                 console.log("XXX")
             })
+        },
+        methods:{
+            getData:function(){
+                var that = this;
+                console.log(this.$route.params.listname)
+                axios.get(`h5/api/category/${this.$route.params.listname}/`)
+                    .then(function(res){
+                        console.log(res)
+                        that.lists= res.data.data.list;
+                    }).catch(function(error){
+                    console.log("XXX")
+                })
+            }
         }
     }
 </script>
 
-<style scoped>
+<style>
     #listy{
         width: 100%;
         background: #eee;

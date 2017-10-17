@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Listy from '@/components/Listy'
 import Listblank from '@/components/Listblank'
+import Item from '@/components/Item'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
                   component: Listy
               }
           ]
+      },
+      {
+          path:"/item/:thing_id",
+          name:"Item",
+          component:Item
       }
   ]
 })

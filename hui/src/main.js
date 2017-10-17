@@ -3,6 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from "./router"
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+
+Vue.use(Mint);
+import { Swipe, SwipeItem } from 'mint-ui';
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+import { Toast } from 'mint-ui';
 
 import Header from './components/Header';
 Vue.component(Header.name, Header);
@@ -12,6 +20,14 @@ import Listx from './components/Listx';
 Vue.component(Listx.name, Listx);
 import Listblank from './components/Listblank';
 Vue.component(Listblank.name, Listblank);
+import Swipes from './components/Swipes';
+Vue.component(Swipes.name, Swipes);
+import Listy from './components/Listy';
+Vue.component(Listy.name, Listy);
+import Header2 from './components/Header2';
+Vue.component(Header2.name, Header2);
+import Footer2 from './components/Footer2';
+Vue.component(Footer2.name, Footer2);
 
 Vue.config.productionTip = false
 

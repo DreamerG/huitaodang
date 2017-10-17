@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <headers></headers>
-        <listx></listx>
-        <footers></footers>
+<!--        <headers></headers>
+        <listx></listx>-->
+
         <router-view/>
     </div>
 </template>
@@ -11,6 +11,7 @@
     export default {
         name: 'app'
     }
+
 </script>
 
 <style scoped>

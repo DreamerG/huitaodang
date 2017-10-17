@@ -1,8 +1,8 @@
 <template>
     <div id="list">
-        <ul>
+        <ul id="xixi">
             <li>
-                <router-link to="/category/nv-zhuang/" active-class="red" exact><span @click="getname">女装</span></router-link>
+                <router-link to="/category/nv-zhuang/" active-class="red" exact>女装</router-link>
             </li>
             <li>
                 <router-link to="/category/nan-zhuang/" active-class="red" exact >男装</router-link>
@@ -20,7 +20,7 @@
                 <router-link to="/category/hu-fu/" active-class="red" exact>护肤</router-link>
             </li>
             <li>
-                <router-link to="/category/shenghuo/" active-class="red" exact>生活</router-link>
+                <router-link to="/category/sheng-huo/" active-class="red" exact>生活</router-link>
             </li>
             <li>
                 <router-link to="/category/ju-jia/" active-class="red" exact>居家</router-link>
@@ -72,6 +72,7 @@
         }
     }
 
+
 </script>
 
 <style scoped>
@@ -85,12 +86,15 @@
         z-index: 999;
     }
     #list ul{
-        overflow: hidden;
+/*        overflow: hidden;
         overflow-x: scroll;
-        overflow-y: hidden;
+        overflow-y: hidden;*/
         -webkit-overflow-scrolling: touch;
         white-space: nowrap;
         height: .96rem;
+        position: relative;
+        left:0;
+        line-height: .3rem;
     }
     #list ul li{
 
@@ -102,7 +106,7 @@
         text-align: center;
         padding: 0 .4rem;
         cursor: pointer;
-        float: left;
+/*        float: left;*/
       }
     .red{
         color:#ff464e;
