@@ -34,7 +34,7 @@
                 <h3>推荐理由</h3>
                 <p>{{things.desc}}</p>
             </div>
-            <h3>推荐宝贝</h3>
+            <h3 class="tuijian">推荐宝贝</h3>
         </div>
         <div id="listy">
             <div class="one" v-for="item in qita" :key="item.pic">
@@ -185,13 +185,20 @@
         padding: 0 .2rem;
         line-height: 1.8;
     }
+    #item .tuijian{
+        padding-left: .3rem;
+        height: 1rem;
+        line-height: 1rem;
+        color: #666;
+        font-size: .45rem;
+        font-weight: 700;
+    }
 
 
     #listy{
         width: 100%;
         background: #eee;
         padding-top: .2rem;
-        margin-top: 2.2rem;
     }
     #listy .one{
         position: relative;

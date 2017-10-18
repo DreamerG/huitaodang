@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Listy from '@/components/Listy'
 import Listblank from '@/components/Listblank'
 import Item from '@/components/Item'
+import Search from '@/components/Search'
 
 Vue.use(Router)
 
@@ -20,9 +21,9 @@ export default new Router({
           component:Listblank,
           children:[
               {
-                  path: ':listname',
+                  path: ':listname/:sort?',
                   name: 'Listy',
-                  component: Listy
+                  component: Listy,
               }
           ]
       },
@@ -30,6 +31,22 @@ export default new Router({
           path:"/item/:thing_id",
           name:"Item",
           component:Item
+      },
+      {
+          path:"/search",
+          name:"Search",
+          component:Search,
+          children:[
+              {
+                  path:':sear',
+                  name:'Item',
+                  comonent:Item
+              }
+          ]
       }
-  ]
+  ],
+    scrollBehavior: function (to, from, savedPosition) {
+        return savedPosition || { x: 0, y: 0 }
+    }
 })
+

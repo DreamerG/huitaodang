@@ -37,7 +37,6 @@ module.exports = {
               changeOrigin: true, //开启代理
               pathRewrite: { '^/h5/api': '/h5/api' }  //这里重写路径/run就代理到对应地址
           }
-
       },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

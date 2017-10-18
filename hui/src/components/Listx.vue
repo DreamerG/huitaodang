@@ -61,14 +61,6 @@
             return{
                 names:[]
             }
-        },
-        methods:{
-            getname:function(){
-
-                this.$route.params.listname = "nv-zhuang";
-
-                alert(this.$route.params.listname)
-            }
         }
     }
 

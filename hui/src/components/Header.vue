@@ -6,10 +6,12 @@
                 <i></i>
             </span>
             <div class="search">
-                <div class="search1">
-                    <i></i>
-                    <div class="word">查找宝贝</div>
-                </div>
+                <router-link to="/search">
+                    <div class="search1">
+                        <i></i>
+                        <div class="word">查找宝贝</div>
+                    </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -54,7 +56,7 @@
     }
     #header .search .search1{
         position: relative;
-        top: .1rem;
+        top: .2rem;
         width: 100%;
         height: .8rem;
         text-align: left;

@@ -50,19 +50,17 @@
         },
         mounted:function(){
             var that = this;
-            console.log(this.$route.params.listname)
-            axios.get(`h5/api/category/${this.$route.params.listname}/`)
-                .then(function(res){
-                    console.log(res)
-                    that.lists= res.data.data.list;
-                }).catch(function(error){
-                console.log("XXX")
-            })
-        },
-        methods:{
-            getData:function(){
-                var that = this;
-                console.log(this.$route.params.listname)
+            console.log(this.$route.params.listname);
+            console.log(this.$route.params.sort);
+            if(this.$route.params.sort){
+                axios.get(`h5/api/category/${this.$route.params.listname}/${this.$route.params.sort}`)
+                    .then(function(res){
+                        console.log(res)
+                        that.lists= res.data.data.list;
+                    }).catch(function(error){
+                    console.log("XXX")
+                })
+            }else{
                 axios.get(`h5/api/category/${this.$route.params.listname}/`)
                     .then(function(res){
                         console.log(res)
@@ -71,11 +69,36 @@
                     console.log("XXX")
                 })
             }
+
+        },
+        methods:{
+            getData:function(){
+                var that = this;
+                console.log(this.$route.params.listname)
+                console.log(this.$route.params.sort)
+                if(this.$route.params.sort){
+                    axios.get(`h5/api/category/${this.$route.params.listname}/${this.$route.params.sort}`)
+                        .then(function(res){
+                            console.log(res)
+                            that.lists= res.data.data.list;
+                        }).catch(function(error){
+                        console.log("XXX")
+                    })
+                }else{
+                    axios.get(`h5/api/category/${this.$route.params.listname}/`)
+                        .then(function(res){
+                            console.log(res)
+                            that.lists= res.data.data.list;
+                        }).catch(function(error){
+                        console.log("XXX")
+                    })
+                }
+            }
         }
     }
 </script>
 
-<style>
+<style scoped nmbhg>
     #listy{
         width: 100%;
         background: #eee;

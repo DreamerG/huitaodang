@@ -29,9 +29,12 @@ body{
 .r {
     float: right;
 }
-div,ul,span{
+div,ul,span,p{
     box-sizing: border-box;
 }
 em{
+    font-style: normal;
+}
+i{
     font-style: normal;
 }
