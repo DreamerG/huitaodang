@@ -19,7 +19,12 @@
 
 <script>
     export default{
-        name:"headers"
+        name:"headers",
+        mounted:function(){
+            if(this.$route.params.sear){
+                document.querySelector(".word").innerHTML = this.$route.params.sear;
+            }
+        }
     }
 </script>
 

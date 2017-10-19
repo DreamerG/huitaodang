@@ -27,7 +27,7 @@
                    </router-link>
                </li>
                <li class="l">
-                   <router-link to="/login" active-class="red" exact>
+                   <router-link to="/register" active-class="red" exact>
                        <i class="iconfont">&#xe639;</i>登录
                    </router-link>
                </li>

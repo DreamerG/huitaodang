@@ -1,0 +1,341 @@
+<template>
+    <div>
+        <headers></headers>
+        <div id="list">
+            <ul id="xixi">
+                <li>
+                    <router-link to="/category/nv-zhuang/" active-class="red">女装</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/nan-zhuang/" active-class="red">男装</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/xie-zi/" active-class="red">鞋子</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/xiang-bao/" active-class="red">箱包</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/mei-zhuang/" active-class="red">美妆</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/hu-fu/" active-class="red">护肤</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/sheng-huo/" active-class="red">生活</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/ju-jia/" active-class="red" exact>居家</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/mei-shi/" active-class="red">美食</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/nei-yi/" active-class="red">内衣</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/yun-dong/" active-class="red">运动</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/shu-ma/" active-class="red">数码</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/mu-ying/" active-class="red">母婴</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/pei-shi/" active-class="red">配饰</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/cheng-ren/" active-class="red">成人</router-link>
+                </li>
+                <li>
+                    <router-link to="/category/qi-ta/" active-class="red">其他</router-link>
+                </li>
+
+            </ul>
+        </div>
+        <div v-if="lists != null">
+            <div id="listy">
+                <div class="one" v-for="item in lists" :key="item.pic">
+                    <router-link :to="'/item/' + item._id" class="a">
+                        <div class="pic">
+                            <img :src="'//gaitaobao4.alicdn.com/tfscom/i2/'+item.pic">
+                        </div>
+                        <div class="word">
+                            <div class="name">{{item.t}}</div>
+                            <div class="priced">
+                        <span>
+                            <i></i>
+                            包邮
+                        </span>
+                                淘宝价&nbsp;￥{{item.cs/100}}
+                            </div>
+                            <div class="people"></div>
+                            <div class="price">
+                                <span class="l">劵后</span>
+                                <em>￥{{item.cp/100}}</em>
+                        <span class="r">
+                            {{item.ca/100}}元劵
+                        </span>
+                            </div>
+                        </div>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <br><br><br><br>
+            <p style="text-align: center;font-size: 1rem;margin-top: 30%">loading...</p>
+        </div>
+        <footers></footers>
+    </div>
+</template>
+
+<script>
+    import axios from "axios"
+    export default {
+        name:"popular",
+        data:function(){
+            return{
+                lists:null
+            }
+        },
+        mounted:function(){
+            var that = this
+            axios.get(`h5/api/popular-items/`)
+                .then(function(res){
+                    console.log(res)
+                    that.lists= res.data.data.list;
+                }).catch(function(error){
+                console.log("XXX")
+            });
+            document.getElementById("list").addEventListener("touchstart",function(evt){
+                var e = event || window.event;
+                var downX = e.changedTouches[0].clientX;
+                var downLeft = document.getElementById("xixi").offsetLeft;
+                document.getElementById("list").addEventListener("touchmove", function (evt) {
+                    var e = event || window.event;
+                    var distX = e.changedTouches[0].clientX - downX;
+                    var a = distX + downLeft;
+                    if(a > 0){
+                        a = 0;
+                    }
+                    if( a < -770){
+                        a = -770;
+                    }
+                    document.getElementById("xixi").style.left = a + "px";
+                })
+                document.getElementById("list").addEventListener("touchend",function(){
+                    document.getElementById("list").removeEventListener("touchstart",evt);
+                    document.getElementById("list").removeEventListener("touchmove",evt);
+                })
+            })
+        }
+    }
+</script>
+
+<style>
+    #list{
+        position: fixed;
+        top:1.2rem;
+        height: 1rem;
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 1px solid #e7e7e7;
+        z-index: 999;
+    }
+    #list ul{
+        /*        overflow: hidden;
+                overflow-x: scroll;
+                overflow-y: hidden;*/
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        height: .96rem;
+        position: relative;
+        left:0;
+        line-height: .3rem;
+    }
+    #list ul li{
+
+        display: inline-block;
+        height: 1rem;
+        line-height: 1rem;
+        color: #333;
+        font-size: .38rem;
+        text-align: center;
+        padding: 0 .4rem;
+        cursor: pointer;
+        /*        float: left;*/
+    }
+    .red{
+        color:#ff464e;
+    }
+    span.sort{
+        position:absolute;
+        top: .1rem;
+        right:0;
+        background: rgba(0,0,0,.5);
+        z-index: 99999;
+        width:1rem;
+        height: .8rem;
+        color: #fff;
+    }
+    #sortHide{
+        height: 10.35rem;
+        width: 100%;
+        position: fixed;
+        background: hsla(0,0%,100%,.9);
+        z-index: 9999;
+        transition: .5s;
+    }
+    .hide{
+        height: 0;
+        opacity: 0;
+        transition: .5s;
+        visibility: hidden;
+    }
+    #sortHide .sort_method{
+        position: relative;
+        border-bottom: 1px solid #e7e7e7;
+        transition: 1s cubic-bezier(.35,2,.35,1),opacity 1s;
+    }
+    #sortHide .sort_method ul li{
+        position: relative;
+        width: 80%;
+        margin: .5rem auto;
+        height: 1rem;
+        line-height: 1rem;
+        border: 1px solid #ff464e;
+        border-radius: .5rem;
+        background: #fff;
+        text-align: center;
+        font-size: .4rem;
+    }
+
+    #listy{
+        width: 100%;
+        background: #eee;
+        padding-top: .2rem;
+        margin-top: 2.2rem;
+    }
+    #listy .one{
+        position: relative;
+        color: #bebebe;
+        border: 0;
+        width: 97%;
+        background: #fff;
+        margin: 0 0 1.2% 1.5%;
+    }
+    #listy .one .a{
+        padding: .1rem;
+        height: auto;
+        width: 100%;
+        display: block;
+        background: #fff;
+    }
+    #listy .one .a .pic{
+        position: relative;
+        width: 35%;
+
+    }
+    #listy img{
+        width: 100%;
+        height: 3.1rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #listy .one .a .word{
+        margin-left: 5%;
+        width: 60%;
+        position: relative;
+        right: -3.4rem;
+        top:0;
+    }
+    #listy .one .a .word .name{
+        font-size: .4rem;
+        color: #333;
+        line-height: 2;
+        white-space: nowrap;
+        word-break: keep-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #listy .one .a .word .priced{
+        font-size: .3rem;
+        color: #666;
+        line-height: 2;
+        height: .6rem;
+        overflow: hidden;
+    }
+    #listy .one .a .word .priced span{
+        position: relative;
+        display: inline-block;
+        height: .4rem;
+        line-height: .4rem;
+        color: #ff5400;
+        font-size: .25rem!important;
+        margin-right: .4rem;
+        border: 1px solid #ff5400;
+        border-radius: 2px;
+        padding-right: .1rem;
+    }
+    #listy .one .a .word .priced span i{
+        display: inline-block;
+        vertical-align: top;
+        width: .4rem;
+        height: .41rem;
+        margin-left: -1px;
+        margin-top: -1px;
+        border-radius: 2px;
+        background: url("../assets/images/cat.png");
+        background-size: .41rem;
+    }
+    #listy .one .a .word .people{
+        height: .4rem;
+        line-height: .4rem;
+        font-size: .3rem;
+        margin-bottom: .5rem;
+    }
+    #listy .one .a .word .price{
+        position: relative;
+        width: 100%;
+        height: .8rem;
+        line-height: 1rem;
+        font-size: .3rem;
+        color: #f20;
+    }
+    #listy .one .a .word .price em{
+        font-size: .5rem;
+        position: absolute;
+        top:-.2rem;
+        font-weight: 700;
+    }
+    #listy .one .a .word .price span.l{
+        position: relative;
+        display: inline-block;
+        bottom: 0rem;
+        width: 1rem;
+        height: .5rem;
+        line-height: .5rem;
+        font-size: .25rem;
+        color: #fff;
+        text-align: center;
+        background: linear-gradient(90deg,#f80,#ff5400);
+        vertical-align: middle;
+        margin-right: .2rem;
+    }
+    #listy .one .a .word .price span.r{
+        position: absolute;
+        right: 0;
+        bottom: .2rem;
+        width: 1.6rem;
+        height: .6rem;
+        line-height: .6rem;
+        font-size: .36rem;
+        color: #fff;
+        text-align: center;
+        background: linear-gradient(90deg,#f80,#ff5400);
+        letter-spacing: 1px;
+    }
+</style>

@@ -28,6 +28,8 @@ import Header2 from './components/Header2';
 Vue.component(Header2.name, Header2);
 import Footer2 from './components/Footer2';
 Vue.component(Footer2.name, Footer2);
+import Common from './components/Common';
+Vue.component(Common.name, Common);
 
 Vue.config.productionTip = false
 

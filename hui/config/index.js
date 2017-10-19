@@ -36,6 +36,11 @@ module.exports = {
               target: 'https://h5.huitaodang.com', //需要代理的目标服务器
               changeOrigin: true, //开启代理
               pathRewrite: { '^/h5/api': '/h5/api' }  //这里重写路径/run就代理到对应地址
+          },
+          '/api':{
+              target:'http://127.0.0.1:3000',
+              changeOrigin:true,
+              pathRewrite: { '^/api': '/api' }
           }
       },
     // CSS Sourcemaps off by default because relative paths are "buggy"

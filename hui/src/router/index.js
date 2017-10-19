@@ -5,6 +5,9 @@ import Listy from '@/components/Listy'
 import Listblank from '@/components/Listblank'
 import Item from '@/components/Item'
 import Search from '@/components/Search'
+import Popular from '@/components/Popular'
+import Register from '@/components/Register'
+
 
 Vue.use(Router)
 
@@ -39,11 +42,30 @@ export default new Router({
           children:[
               {
                   path:':sear',
-                  name:'Item',
-                  comonent:Item
+                  name:'Search',
+                  comonent:Search
               }
           ]
+      },
+      {
+          path:"/popular-items",
+          name:"Popular",
+          component:Popular
+      },
+      {
+          path:"/register",
+          name:"Register",
+          component:Register
+      },
+      {
+          path:"/9k9",
+          name:"Listy",
+          component:Listy
       }
+
+
+
+
   ],
     scrollBehavior: function (to, from, savedPosition) {
         return savedPosition || { x: 0, y: 0 }
