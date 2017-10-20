@@ -47,6 +47,8 @@ router.post("/register",function(req,res){
             else{
                 res.send(false)
             }
+        }else{
+            res.send(error)
         }
     })
 })
@@ -82,6 +84,9 @@ router.post("/login",function(req,res){
     },function(error,result){
         if(!error){
             if(result.length > 0){
+                req.session.pool = result[0];
+                res.cookie("currentname",result[0].username);
+                res.cookie("flag",true)
                 res.send(true)
             }
             else{

@@ -7,6 +7,9 @@ import Item from '@/components/Item'
 import Search from '@/components/Search'
 import Popular from '@/components/Popular'
 import Register from '@/components/Register'
+import Common from '@/components/Common'
+import Twenty from '@/components/Twenty'
+import Login from '@/components/Login'
 
 
 Vue.use(Router)
@@ -59,8 +62,18 @@ export default new Router({
       },
       {
           path:"/9k9",
-          name:"Listy",
-          component:Listy
+          name:"Common",
+          component:Common
+      },
+      {
+          path:"/20k",
+          name:"Twenty",
+          component:Twenty
+      },
+      {
+          path:"/login",
+          name:"Login",
+          component:Login
       }
 
 

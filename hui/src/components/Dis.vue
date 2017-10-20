@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div v-if="lists != null">
+
             <div id="listy">
-                <div class="one" v-for="item in lists" :key="item.pic">
+                <div class="one" v-for="item in this.$store.state.listx" :key="item.pic">
                     <router-link :to="'/item/' + item._id" class="a">
                         <div class="pic">
                             <img :src="'//gaitaobao4.alicdn.com/tfscom/i2/'+item.pic">
@@ -28,83 +28,22 @@
                     </router-link>
                 </div>
             </div>
-        </div>
-        <div v-else>
-            <br><br><br><br>
-            <p style="text-align: center;font-size: 1rem;margin-top: 30%">loading...</p>
-        </div>
+
     </div>
 </template>
 
 <script>
-    import axios from "axios"
-    export default{
-        name:"listy",
-        data:function(){
-            return{
-                lists:null
-            }
-        },
-        watch:{
-            "$route":["getData"]
-        },
-        mounted:function(){
-            var that = this;
-            console.log(this.$route.params.listname);
-            console.log(this.$route.params.sort);
-            if(this.$route.params.sort){
-                axios.get(`h5/api/category/${this.$route.params.listname}/${this.$route.params.sort}`)
-                    .then(function(res){
-                        console.log(res)
-                        that.lists= res.data.data.list;
-                    }).catch(function(error){
-                    console.log("XXX")
-                })
-            }else{
-                axios.get(`h5/api/category/${this.$route.params.listname}/`)
-                    .then(function(res){
-                        console.log(res)
-                        that.lists= res.data.data.list;
-                    }).catch(function(error){
-                    console.log("XXX")
-                })
-            }
-
-        },
-        methods:{
-            getData:function(){
-                var that = this;
-                console.log(this.$route.params.listname)
-                console.log(this.$route.params.sort)
-                if(this.$route.params.sort){
-                    axios.get(`h5/api/category/${this.$route.params.listname}/${this.$route.params.sort}`)
-                        .then(function(res){
-                            console.log(res)
-                            that.lists= res.data.data.list;
-                        }).catch(function(error){
-                        console.log("XXX")
-                    })
-                }else{
-                    axios.get(`h5/api/category/${this.$route.params.listname}/`)
-                        .then(function(res){
-                            console.log(res)
-                            that.lists= res.data.data.list;
-                        }).catch(function(error){
-                        console.log("XXX")
-                    })
-                }
-            }
-        }
+    export default {
+        name:'dis'
     }
 </script>
 
-<style scoped nmbhg>
+<style>
     #listy{
         width: 100%;
         background: #eee;
         padding-top: .2rem;
-        margin-top: 2.2rem;
-        margin-bottom: 1rem;
+        margin-top: 1rem;
     }
     #listy .one{
         position: relative;

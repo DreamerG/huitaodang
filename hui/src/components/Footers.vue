@@ -12,11 +12,6 @@
                    </router-link>
                </li>
                <li class="l">
-                   <router-link to="/activities" active-class="red" exact>
-                       <i class="iconfont">&#xe60d;</i>促销活动
-                   </router-link>
-               </li>
-               <li class="l">
                    <router-link to="/9k9" active-class="red" exact>
                        <i class="iconfont">&#xe683;</i>9块9包邮
                    </router-link>
@@ -28,6 +23,11 @@
                </li>
                <li class="l">
                    <router-link to="/register" active-class="red" exact>
+                       <i class="iconfont">&#xe60d;</i>注册
+                   </router-link>
+               </li>
+               <li class="l">
+                   <router-link to="/login" active-class="red" exact>
                        <i class="iconfont">&#xe639;</i>登录
                    </router-link>
                </li>

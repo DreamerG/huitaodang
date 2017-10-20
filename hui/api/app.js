@@ -14,6 +14,14 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+var session = require("express-session");
+app.use(session({
+    name: "poolNodeSessID",       //cookie中显示的name
+    secret:"dw3243dw",          //随意，加密方式
+    cookie: {maxAge: 1000*3600 }, //1小时
+    resave: true,
+    saveUninitialized: true
+}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

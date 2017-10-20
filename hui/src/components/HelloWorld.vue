@@ -269,6 +269,7 @@ export default {
         width: 100%;
         background: #eee;
         padding-top: .2rem;
+        margin-bottom: 1rem;
     }
     #listy .one{
         position: relative;

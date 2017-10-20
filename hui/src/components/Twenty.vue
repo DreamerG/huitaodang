@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name:'common',
+        name:'twenty',
         data:function(){
             return {
                 route:""

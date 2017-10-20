@@ -38,7 +38,7 @@ module.exports = {
               pathRewrite: { '^/h5/api': '/h5/api' }  //这里重写路径/run就代理到对应地址
           },
           '/api':{
-              target:'http://127.0.0.1:3000',
+              target:'http://localhost:3000',
               changeOrigin:true,
               pathRewrite: { '^/api': '/api' }
           }

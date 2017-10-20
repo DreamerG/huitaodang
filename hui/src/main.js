@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from "./router"
+import store from "./vuex/store"
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 
@@ -30,6 +31,8 @@ import Footer2 from './components/Footer2';
 Vue.component(Footer2.name, Footer2);
 import Common from './components/Common';
 Vue.component(Common.name, Common);
+import Dis from './components/Dis';
+Vue.component(Dis.name, Dis);
 
 Vue.config.productionTip = false
 
@@ -37,8 +40,9 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App }
 })
